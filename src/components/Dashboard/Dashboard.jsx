@@ -14,7 +14,7 @@ function Dashboard() {
         if (res.data.role === "admin") {
           navigate("/dashboard");
         } else {
-          navigate("/login");
+          navigate("/admin");
         }
       } else {
         navigate("/admin");
@@ -40,7 +40,7 @@ function Dashboard() {
         </Link>
         <ul className="menu" id="menu">
           <li>
-            <Link to="/admin" data-bs-toggle="collapse">
+            <Link to="#" data-bs-toggle="collapse">
               <i className="fs-4 bi-speedometer2"></i>{" "}
               <span className="menu-text">Dashboard</span>
             </Link>

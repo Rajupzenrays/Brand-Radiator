@@ -37,7 +37,7 @@ function Navbar() {
               <Link to="/contact" className={selectedLink === 'contact' ? 'active' : ''} onClick={() => setSelectedLink('contact')}>Contact Us</Link>
             </li>
             <li>
-              {console.log((localStorage.getItem('isLoggedIn')))}
+              {/* {console.log((localStorage.getItem('isLoggedIn')))} */}
               <Link to={localStorage.getItem('isLoggedIn') == true ? "/admin" : "/dashboard"} className={selectedLink === 'admin' ? 'active' : ''} onClick={() => setSelectedLink('admin')}>Admin</Link>
             </li>
           </ul>

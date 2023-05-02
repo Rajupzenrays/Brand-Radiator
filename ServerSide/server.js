@@ -54,23 +54,22 @@ con.connect((err, conn) => {
     console.log("Connected");
   }
 });
-app.post("/employee", (req, res) => {
+app.post("/contactus", (req, res) => {
   const details = req.body;
   console.log("details", details);
-  const insertEmployeeQuery = `INSERT INTO employee(NAME, EMAIL, GENDER, HOBBY, PASSWORD) 
-    VALUES (?, ?, ?, ?, ?)`;
+  const insertContactDetailsQuery = `INSERT INTO CUSTOMER(NAME, EMAIL, PHONE, MESSAGE) 
+    VALUES (?, ?, ?, ?)`;
 
-  const insertEmployeeValues = [
-    `${details.firstName} ${details.lastName}`,
+  const insertContactDetails = [
+    `${details.name}`,
     details.email,
-    details.gender,
-    details.hobbies,
-    details.password,
+    details.phone,
+    details.message,
   ];
 
   con.execute({
-    sqlText: insertEmployeeQuery,
-    binds: insertEmployeeValues,
+    sqlText: insertContactDetailsQuery,
+    binds: insertContactDetails,
     complete: (err, stmt, rows) => {
       if (err) {
         console.error(`Error inserting employee: ${err.message}`);
@@ -108,13 +107,13 @@ app.post("/manager", (req, res) => {
   });
 });
 
-app.get("/getEmployee", (req, res) => {
-  const sql = "SELECT * FROM employee";
+app.get("/getContactus", (req, res) => {
+  const sql = "SELECT * FROM CUSTOMER";
   con.execute({
     sqlText: sql,
     complete: (err, stmt, rows) => {
       if (err) {
-        return res.json({ Error: "Get employee error in SQL" });
+        return res.json({ Error: "Get customer error in SQL" });
       }
       return res.json({ Status: "Success", Result: rows });
     },

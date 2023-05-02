@@ -1,0 +1,17 @@
+.about_container{
+    max-width: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: auto;
+}
+.about_container h2{
+    margin-bottom:10px;
+}
+.inside_founder{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
