@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./NavbarStyles.css";
 import Logo from '../../Images/BR-logo.png'
@@ -8,6 +8,17 @@ import {RxCross2} from 'react-icons/rx'
 function Navbar() {
   const [clicked, setClicked] = useState(false);
   const [selectedLink, setSelectedLink] = useState('home');
+  const [isScrolling, setIsScrolling] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+  
+  const handleScroll = () => {
+    const scrollTop = window.pageYOffset;
+    setIsScrolling(scrollTop > 0);
+  };
 
   const handleClick = () => {
     setClicked(!clicked);
@@ -15,7 +26,7 @@ function Navbar() {
 
   return (
     <>
-      <nav>
+      <nav className={isScrolling ? "scrolling-nav" : ""}>
         <Link to="/">
           <img src={Logo} alt="logo" />
         </Link>
