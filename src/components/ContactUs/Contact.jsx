@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./style.css";
 const Contact = () => {
+  const [isSubmit, setIsSubmit] = useState(false)
   const [data, setData] = useState({
     name: "",
     email: "",
@@ -16,7 +17,7 @@ const Contact = () => {
       .then((res) => {
         console.log("res", res);
         if (res.data.Status == "Success") {
-          return <h1>Success</h1>;
+          setIsSubmit(true)
         }
       })
       .catch((err) => console.log(err));
@@ -42,7 +43,7 @@ const Contact = () => {
               </h2>
               <h3>Enter your details below to conquer your business goals</h3>
             </div>
-            <div className="container">
+            {!isSubmit ? <div className="container">
               <h2>Contact Us</h2>
               <form onSubmit={handleSubmit}>
                 <div className="form-group">
@@ -107,7 +108,8 @@ const Contact = () => {
                   Submit
                 </button>
               </form>
-            </div>
+            </div> 
+            : <div className="Submited_after">Submited SuccessFully</div>}
           </div>
         </div>
       </div>
