@@ -31,6 +31,11 @@
     list-style: none;
     text-decoration: none;
   }
+  .sidebar  a{
+    list-style: none;
+    text-decoration: none;
+    color: #fff;
+  }
   .sidebar ul li a:hover {
     background-color: #555;
   }
